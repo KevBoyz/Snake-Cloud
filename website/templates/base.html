@@ -26,10 +26,14 @@
                         <li class="nav-item">
                             <a href="{{url_for('auth.logout')}}" class="nav-link">Logout</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                About
-                            </a>
+                         <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            About
+                        </a>
+                            <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                            <a href="" class="dropdown-item">Github</a>
+                                <a class="dropdown-item" href="#">Admin contact</a>
+                            </div>
                     {% else %}
                         <li class="nav-item">
                             <a href="" class="nav-link">Jungle of files</a>
@@ -50,7 +54,7 @@
                             <a href="" class="nav-link">Binary Nests</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">Your Profile</a>
+                            <a href="{{user.name}}" class="nav-link">Your Profile</a>
                         </li>
                 </ul>
                 <ul class="navbar-nav mr-auto">
@@ -90,12 +94,9 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
-
-
-
     </header>
     <main>
-        <div class="container">
+        <div class="container" style="max-width: 90%">
           {% block content %}
           {% endblock %}
         </div>
