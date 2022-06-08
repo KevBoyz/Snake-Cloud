@@ -1,0 +1,20 @@
+.flex-nav-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.50rem;
+}
+.flex-nav-card-item{
+  font-size: 1em;
+  text-align: center;
+  width: 100%;
+  padding: 1em 0 1em 0;
+  color: #777;
+}
+.flex-nav-card-item:hover{
+    background-color: #edeeed;
+    color: black;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.100);
+    text-decoration: None;
+}
