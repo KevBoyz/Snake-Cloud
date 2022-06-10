@@ -1,7 +1,8 @@
-from flask import Blueprint, render_template, url_for, redirect
+from flask import Blueprint, render_template, url_for, redirect, request
 from flask_login import login_required, current_user
 from werkzeug.exceptions import abort
 from website.models import User
+from . import db
 
 views = Blueprint('views', __name__)
 
@@ -18,4 +19,15 @@ def profile(user_name):
     user = User.query.filter_by(name=user_name).first()
     if not user:
         return abort(404)
-    return render_template('profile.html', user_page=user, current_user=current_user)
+    return render_template('profile_overview.html', user_page=user, current_user=current_user)
+
+
+@login_required
+@views.route('/<user_name>/edit', methods=('GET', 'POST'))
+def profile_edit(user_name):
+    user = User.query.filter_by(name=user_name).first()
+    if not user:
+        return abort(401)
+    if request.method == 'POST':
+        ...
+    return render_template('profile_edit.html', user_page=current_user, user=current_user)
