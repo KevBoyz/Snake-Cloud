@@ -29,5 +29,8 @@ def profile_edit(user_name):
     if not user:
         return abort(401)
     if request.method == 'POST':
-        ...
+        user.fullName = request.form.get('fullName')
+        user.bio = request.form.get('bio')
+        user.website = request.form.get('website')
+        db.session.commit()
     return render_template('profile_edit.html', user_page=current_user, user=current_user)

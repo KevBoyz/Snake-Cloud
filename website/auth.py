@@ -16,7 +16,7 @@ def login():
         if user:
             if check_password_hash(user.password, password):
                 login_user(user, remember=True)
-                flash('Logged successfully')
+                # flash('Logged successfully')
                 return redirect(url_for('views.home'))
             else:
                 flash('Incorrect password', category='error')
@@ -41,7 +41,13 @@ def sing_up():
         elif len(email) < 3 or len(email) == 0:
             flash('Email is to short!', category='error')
         else:
-            new_user = User(name=name, email=email, password=generate_password_hash(password1, method='sha256'))
+            new_user = User(name=name,
+                            email=email,
+                            password=generate_password_hash(password1, method='sha256'),
+                            fullName=name,
+                            website='',
+                            address='',
+                            bio='')
             db.session.add(new_user)
             db.session.commit()
             flash('Account registered!', category='success')
@@ -49,11 +55,8 @@ def sing_up():
     return render_template('sing-up.html', user=current_user)
 
 
-
 @auth.route('/logout')
 def logout():
     logout_user()
-    flash('You have been logged out', category='success')
+    # flash('You have been logged out', category='success')
     return redirect(url_for('auth.login'))
-
-
