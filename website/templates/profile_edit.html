@@ -21,18 +21,18 @@
                         </div>
                         <div class="form-group">
                             <label>Address</label>
-                            <input type="text" class="form-control" id="address" placeholder="Enter your address" value="{{current_user.address}}">
+                            <input type="text" class="form-control" id="address" name="address" placeholder="Enter your address" value="{{current_user.address}}">
                         </div>
                         <div class="form-group">
                             <label>Company</label>
-                            <input type="text" class="form-control" id="company" placeholder="Enter your company">
+                            <input type="text" class="form-control" id="company" name="company" placeholder="Enter your company" value="{{current_user.company}}">
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="form-group">
                             <label>Biograph</label>
                             <textarea class="form-control" id="bio" name="bio" placeholder="Enter your bio" cols="40" rows="5" style="height: 124px; text-align:left;">
-                                {{current_user.bio.strip()}}
+                                {{current_user.bio}}
                             </textarea>
                         </div>
                         <div class="form-group">

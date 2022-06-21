@@ -47,6 +47,7 @@ def sing_up():
                             fullName=name,
                             website='',
                             address='',
+                            company='',
                             bio='')
             db.session.add(new_user)
             db.session.commit()

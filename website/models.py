@@ -10,5 +10,6 @@ class User(db.Model, UserMixin):
     fullName = db.Column(db.String())
     website = db.Column(db.String())
     address = db.Column(db.String())
+    company = db.Column(db.String())
     bio = db.Column(db.String(200))
 

@@ -32,5 +32,7 @@ def profile_edit(user_name):
         user.fullName = request.form.get('fullName')
         user.bio = request.form.get('bio')
         user.website = request.form.get('website')
+        user.address = request.form.get('address')
+        user.company = request.form.get('company')
         db.session.commit()
     return render_template('profile_edit.html', user_page=current_user, user=current_user)
