@@ -11,7 +11,7 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a href="{{url_for('views.home')}}" class="navbar-brand">Snake Cloud</a>
+            <a href="#" class="navbar-brand">Snake Cloud</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -19,13 +19,13 @@
                 <ul class="navbar-nav mr-auto">
                     {% if not current_user.is_authenticated %}
                         <li class="nav-item">
-                            <a href="{{url_for('auth.sing_up')}}" class="nav-link">Sing-up</a>
+                            <a href="#" class="nav-link">Sing-up</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{url_for('auth.login')}}" class="nav-link">Login</a>
+                            <a href="#" class="nav-link">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{url_for('auth.logout')}}" class="nav-link">Logout</a>
+                            <a href="#" class="nav-link">Logout</a>
                         </li>
                          <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -60,7 +60,7 @@
                 </ul>
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a href="{{url_for('auth.logout')}}" class="nav-link">Log Out</a>
+                        <a href="#" class="nav-link">Log Out</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -74,27 +74,6 @@
                 {% endif %}
             </div>
         </nav>
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    {% if category == 'error' %}
-                        <div class="alert alert-danger alter-dismissable fade show" role="alert">
-                            {{ message }}
-                            <button type="button" class="close" data-dismiss="alert">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    {% else %}
-                        <div class="alert alert-success alter-dismissable fade show" role="alert">
-                              {{ message }}
-                            <button type="button" class="close" data-dismiss="alert">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    {% endif %}
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
     </header>
     <main>
         <div class="container" style="max-width: 90%">
