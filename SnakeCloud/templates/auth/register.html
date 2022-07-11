@@ -1,51 +1,82 @@
 {% extends "base.html" %}
-{% block title %}Login{% endblock %}
+{% block title %}Register{% endblock %}
+
+{% block 'head' %}
+    <style>
+        .login,
+        .image {
+        min-height: 100vh;
+        }
+
+        .bg-image {
+        background-image: url('https://img.freepik.com/fotos-premium/python-arvore-verde-morelia-viridis-em-galhos-em-jardim-tropical_103127-260.jpg');
+        background-size: cover;
+        background-position: center top -20px;
+        }
+        div, p, h3{
+            color: white
+        }
+        .dark{
+            background-color: #2a2823;
+        }
+        .form-control{
+            background-color: #201f1b;
+            color: #218838;
+        }
+        .form-control:hover{
+            background-color: #242221;
+            color: #218838;
+        }
+        .form-control:focus{
+            background-color: #302e2d;
+            color: #218838;
+        }
+        #maindiv{
+              position: fixed;
+              top:56px;
+              width: 100%;
+           }
+    </style>
+{% endblock %}
+
 
 {% block content %}
-<form method="POST">
-      <br>
-      <h3 align="center">Sign Up</h3>
-      <div class="form-group">
-        <label for="email">Email Address</label>
-        <input
-          type="email"
-          class="form-control"
-          id="email"
-          name="email"
-          placeholder="Enter email"
-        />
-      </div>
-      <div class="form-group">
-        <label for="firstName">Username</label>
-        <input
-          type="text"
-          class="form-control"
-          id="name"
-          name="name"
-          placeholder="Enter username"
-        />
-      </div>
-      <div class="form-group">
-        <label for="password1">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="password1"
-          name="password1"
-          placeholder="Enter password"
-        />
-      </div>
-      <div class="form-group">
-        <label for="password2">Password (Confirm)</label>
-        <input
-          type="password"
-          class="form-control"
-          id="password2"
-          name="password2"
-          placeholder="Confirm password"
-        />
-      </div>
-      <br />
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    <div class="container-fluid" id="maindiv">
+            <div class="row no-gutter">
+                <div class="col-md-5 d-none d-md-flex bg-image"></div>
+                <div class="col-md-7 dark">
+                    <div class="login d-flex align-items-center py-5">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-10 col-xl-7 mx-auto" style="top:-50px">
+                                    <h3 class="display-4" style="text-align: center;">Register Snake</h3>
+                                    <p class="text-muted mb-4" style="text-align: center;">Be welcome to snakes hall, enjoy the power of info. ~Kbz.</p>
+                                    <form method="POST" action=""> {% csrf_token %}
+                                        <div class="form-group mb-3">
+                                            <input id="inputname" name="name" type="text" placeholder="Username" required="" autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <input id="inputEmail" name="email" type="email" placeholder="Email address" required="" autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <input id="inputPassword1" name="password1" type="password" placeholder="Password" required="" class="form-control rounded-pill border-0 shadow-sm px-4">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <input id="inputPassword2" name="password1" type="password" placeholder="Password (confirm)" required="" class="form-control rounded-pill border-0 shadow-sm px-4">
+                                        </div>
+                                        <button type="submit" class="btn btn-success btn-block mb-2 rounded-pill shadow-sm">Log in</button>
+                                        <div class="text-center d-flex justify-content-between mt-4">
+                                            <p>
+                                                Already have an account?
+                                                <a href="{% url 'login' %}" class="font-italic text-muted"><u>click here</u></a>
+                                            </p>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 {% endblock %}
