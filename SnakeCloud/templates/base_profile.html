@@ -1,19 +1,19 @@
 {% extends "base.html" %}
-{% block title %}{{user_page.name}}{% endblock %}
+{% block title %}{{user.username}}{% endblock %}
 
 {% block content %}
 <br>
-<section>
-      <div class="row" style="margin-left: -13px">
+<section style="margin: 0 30px 0 30px">
+      <div class="row">
         <div class="col-lg-4">
           <div class="card mb-4">
             <div class="card-body text-center">
-              <img src="../static/media/default_prof_image.jpg" alt="avatar" title="Source: Vecteezy.com"
-                class="rounded-circle img-fluid" style="width: 150px;">
-              <h5 class="my-3">{{user_page.fullName}}</h5>
-              <p class="text-muted mb-4">{{user_page.bio}}</p>
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyodLg1AOTOlrYDYjCvjGWZTav_fUeGK92Pw&usqp=CAU"
+                   alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+              <h5 class="my-3">{{user.username}}</h5>
+              <p class="text-muted mb-4">Lorem ipsum dolor sit amet</p>
               <div class="d-flex justify-content-around mb-2">
-                {% if user_page.name != current_user.name %}
+                {% if user.username != userpage %}
                   <button type="button" class="btn btn-outline-primary ms-1" style="width: 30%">Message</button>
                   <button type="button" class="btn btn-primary" style="width: 60%">Follow</button>
                 {% else %}
