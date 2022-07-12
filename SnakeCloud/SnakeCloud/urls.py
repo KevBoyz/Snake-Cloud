@@ -21,5 +21,6 @@ urlpatterns = [
     path('', root),
     path('admin/', admin.site.urls),
     path('auth/', include('authentication.urls')),
-    path('<str:username>/', include('userpage.urls'))
+    path('<str:username>/', include('userpage.urls')),
+    path('jungle/', include('jungle_of_files.urls')),
 ]

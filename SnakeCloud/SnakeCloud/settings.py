@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'authentication',
     'userpage',
+    'jungle_of_files',
 ]
 
 MIDDLEWARE = [
