@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block 'head' %}
+    <style>
+        div, p, h3{
+            color: white
+        }
+        main, html{
+            background-color: #2a2823;
+        }
+        .dark{
+            background-color: #333;
+        }
+        .form-control{
+            background-color: #201f1b;
+            color: #218838;
+        }
+        .form-control:hover{
+            background-color: #242221;
+            color: #218838;
+        }
+        .form-control:focus{
+            background-color: #262423;
+            color: #218838;
+        }
+        #main{
+          width: 60%;
+          border: 2px white solid;
+          border-radius: .5em;
+        }
+        main{
+        padding-top: 30px;
+        }
+        .rounded-pill{
+          width: 45%;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="container dark" id='main'>
+  <h1 style="text-align: center; padding: 10px 0 10px 0" class="display-4">Upload a file - Public Archive</h1>
+  <form method="POST"> {% csrf_token %}
+    <div class="form-group" style="display: flex;justify-content: space-evenly;">
+      <input type="text" name="title" placeholder="Post title" class="form-control rounded-pill border-0 shadow-sm px-4">
+      <input type="text" name="description" placeholder="Post description" class="form-control rounded-pill border-0 shadow-sm px-4">
+    </div>
+    <div class="form-group" style="display: flex;justify-content: space-between;padding-left:3.5%;">
+      <label style="width: 50%; text-align: center;">Choose any file to publish</label>
+      <label style="width: 50%; text-align: center;">Choose an image to your publishing (optional) </label>
+    </div>
+    <div class="form-group" style="display: flex;justify-content: space-between;padding-left:3.5%;">
+      <input type="file" name="upload_file" class="form-control-file" style="width:50%;" >
+      <input type="file" name="card_image" class="form-control-file" style="width:50%;">
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-success btn-block mb-2 rounded-pill shadow-sm" style="width: 100%; margin:20p 0 10px 0x">Upload</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
