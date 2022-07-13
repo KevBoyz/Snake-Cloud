@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block 'head' %}
+  <style>
+    .card{
+    margin: 0 3px 3px 3px !important;
+    max-width: 30%;
+    }
+  </style>
+{% endblock %}
+
+{% block  content %}
+<h1>
+  {{post.title}}
+</h1>
+<h2>
+  {{post.description}}
+</h2>
+<h3>
+  {{post.file}}
+</h3>
+{% endblock %}
