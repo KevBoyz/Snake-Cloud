@@ -22,7 +22,7 @@ def upload(request):
         description = request.POST.get('description')
         file = request.FILES.get('upload_file')
         try:
-            file_upload = FilePost(
+            file_upload = FilePost.objects.create(
                 user=request.user,
                 title=title,
                 description=description,

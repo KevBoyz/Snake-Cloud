@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Dashboard{% endblock %}
 
@@ -19,6 +20,6 @@
   {{post.description}}
 </h2>
 <h3>
-  {{post.file}}
+  <a href="{{post.file.url}}" download>Download</a>
 </h3>
 {% endblock %}
