@@ -21,6 +21,7 @@ def upload(request):
         title = request.POST.get('title')
         description = request.POST.get('description')
         file = request.FILES.get('upload_file')
+        image = request.FILES.get('card_image')
         try:
             file_upload = FilePost.objects.create(
                 user=request.user,

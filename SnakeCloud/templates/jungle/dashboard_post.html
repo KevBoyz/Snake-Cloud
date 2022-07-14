@@ -9,17 +9,42 @@
     margin: 0 3px 3px 3px !important;
     max-width: 30%;
     }
+    #main {
+      padding-top: 30px;
+      max-width: 60%;
+    }
+    #main-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    a {
+      text-decoration: none;
+      color: #fff
+    }
+    a:hover {
+      text-decoration: none;
+      color: #fff
+    }
+    .btn-success {
+      margin: 50px 0 0 10%;
+      width: 80%;
+    }
+    .dark, html, main{
+      background-color: #2a2823;
+      color: #28a543;
+  }
   </style>
 {% endblock %}
 
 {% block  content %}
-<h1>
-  {{post.title}}
-</h1>
-<h2>
-  {{post.description}}
-</h2>
-<h3>
-  <a href="{{post.file.url}}" download>Download</a>
-</h3>
+  <div class="container" id="main">
+    <p style="text-align: left; display:inline">{{post.user}} {{post.date}}</p>
+    <h1 id="main-title">
+      {{post.title}}
+    </h1>
+    <h2>
+      {{post.description}}
+    </h2>
+    <a href="{{post.file.url}}" download><button class="btn btn-success mb-2 rounded-pill shadow-sm">Download</button></a>
+  </div>
 {% endblock %}
