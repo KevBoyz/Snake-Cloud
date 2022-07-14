@@ -67,27 +67,19 @@ small {
 <div class="container-fluid dark" style="display: flex; padding:30px 0 0 0; width:100%;">
     <div class="container" style="width: 100%; padding:0 0 20px 0;">
       <div class="card-group" style="width: 90%;">
-        <div class="card contrast" style="border: 1px #343434 solid">
-          <a href="">
-            <div class="card-body">
-              <h5 class="card-title dark-title">KevBoyz's Room</h5>
-              <p class="card-text dark-p">LOL a room</p>
-              <p class="card-text dark-p">xyz Members </p>
-              <p class="card-text dark-p"><small>Created by KevBoyz xx/yy/zz</small></p>
-            </div>
-          </a>
+        {% for room in rooms %}
+          <div class="card contrast" style="border: 1px #343434 solid">
+            <a href="/{{room.name}}">
+              <div class="card-body">
+                <h5 class="card-title dark-title">{{room.name}}</h5>
+                <p class="card-text dark-p">{{room.description}}</p>
+                <p class="card-text dark-p">xyz Members </p>
+                <p class="card-text dark-p"><small>Created by {{room.user}} xx/yy/zz</small></p>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
         </div>
-        <div class="card contrast" style="border: 1px #343434 solid">
-          <a href="">
-            <div class="card-body">
-              <h5 class="card-title dark-title">KevBoyz's Room</h5>
-              <p class="card-text dark-p">LOL a room</p>
-              <p class="card-text dark-p">xyz Members </p>
-              <p class="card-text dark-p"><small>Created by KevBoyz xx/yy/zz</small></p>
-            </div>
-          </a>
-        </div>
-        
       </div>
   </div>
 </div>
