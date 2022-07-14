@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'authentication',
     'userpage',
     'jungle_of_files',
+    'trees'
 ]
 
 MIDDLEWARE = [
