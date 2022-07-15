@@ -4,27 +4,34 @@
 
 {% block 'head' %}
   <style>
+  html, body, main {
+  height: 95%;
+  }
       .dark, html, main{
       background-color: #2a2823;
       color: #28a543;
   }
     #main {
-      padding-top: 30px;
-      max-width: 90%;
+      padding: 0;
+      width: 100%;
+      display: flex;
+      margin: 0;
+      height: 100%;
     }
+    #main div{padding:0}
     #main-title {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 15px;
     }
     .contrast{
       background-color: #333;
       color: #10dd3c;
     }
-    .contrast a{
+    a{
       color: #10dd3c;
       text-decoration: none;
     }
-    .contrast a:hover{
+    a:hover{
     }
     .dark, html{
       background-color: #2a2823;
@@ -49,11 +56,52 @@
 small {
    color: #10cc3c;
 }
+#users{
+  width: 30%;
+  height: 100%;
+}
+#chat {
+  width: 70%;
+    height: 100%;
+  }
+  #urs p{
+  text-align:left;
+  padding: 10px 0 10px 20px;
+  margin-bottom: 2px;
+  background-color: #0000001f;
+  }
+  #chat-section p {
+    padding: 20px;
+    background-color: #0000001f;
+    margin: 3px 0 3px 0
+  }
   </style>
 {% endblock %}
 
 {% block  content %}
-<div class="container dark" id="main">
-  <h1 id="main-title" class="dark">{{room.name}} of {{room.user}}</h1>
+<div class="dark" id="main">
+    <div class="container dark" id="users" style="overflow-y:scroll; ">
+      <div style="height:100%;border: 1px white solid; width: 100%;box-shadow: 1px 1px 2px grey" id="urs">
+        <h1 style="text-align:center;">{{room.name}}</h1>
+        <p><a href="">{{room.user}}</a></p>
+        <p><a href="">{{room.user}}</a></p>
+        <p><a href="">{{room.user}}</a></p>
+        <p><a href="">{{room.user}}</a></p>
+        <p><a href="">{{room.user}}</a></p>
+      </div>
+    </div>
+  <div class="container dark" id="chat">
+    <div id="chat-section" style="overflow-y:scroll; height:92%; border: 1px white solid; width: 100%;box-shadow: 1px 1px 2px grey" class="container">
+      <p>12:45 {{room.user}}: lol</p> <!--89 max-->
+      <p>12:45 {{room.user}}: ashuaashuaashuaashuaasasdsadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+    </div>
+      <div style="width: 100%; height: 8%; padding:0; display: flex;" class="container">
+          <form method="POST" style="width: 100%; display:flex;">
+            <input type="text" placeholder="Type your message" style="width: 80%; height: 100%;">
+            <button type="submit" class="btn-success" style="width: 20%;">Send</button>
+          </form>
+      </div>
+  </div>
+
 </div>
 {% endblock %}
