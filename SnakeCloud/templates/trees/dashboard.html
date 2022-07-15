@@ -56,7 +56,8 @@ small {
       <button type="submit" class='btn btn-success' style="width: 20%; height: 3em;margin: .5% 0 0 1%;">Search</button>
     </div>
     <div class="container" style="display:flex; width:100%; margin:0;position: relative;">
-      <button type="submit" class='btn btn-success' style="width: 20%; height: 3em;margin: 1% 1.5% 0 0;">Create a new Room</button>
+
+      <button type="submit" class='btn btn-success' style="width: 20%; height: 3em;margin: 1% 1.5% 0 0;"><a href="/utf8trees/new">Create a new Room</a></button>
       <button type="submit" class='btn btn-info' style="width: 20%; height: 3em;margin: 1% 1.5% 0 0;">Recent Rooms</button>
       <button type="submit" class='btn btn-warning' style="width: 20%; height: 3em;margin: 1% 1% 0 0;">Manage your Rooms</button>
       <button type="submit" class='btn btn-danger' style="width: 20%; height: 3em;margin: 1% 0 0 0;">Report an Room</button>
@@ -73,8 +74,8 @@ small {
               <div class="card-body">
                 <h5 class="card-title dark-title">{{room.name}}</h5>
                 <p class="card-text dark-p">{{room.description}}</p>
-                <p class="card-text dark-p">xyz Members </p>
-                <p class="card-text dark-p"><small>Created by {{room.user}} xx/yy/zz</small></p>
+                <p class="card-text dark-p">{{room.len}} Members </p>
+                <p class="card-text dark-p"><small>Created by {{room.admin}} {{room.date}}</small></p>
               </div>
             </a>
           </div>

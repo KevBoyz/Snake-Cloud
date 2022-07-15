@@ -81,23 +81,22 @@ small {
 {% block  content %}
 <div class="dark" id="main">
     <div class="container dark" id="users" style="overflow-y:scroll; ">
-      <div style="height:100%;border: 1px white solid; width: 100%;box-shadow: 1px 1px 2px grey" id="urs">
+      <div style="height:100%;border: 1px #0000001f solid; width: 100%;box-shadow: 1px 1px 2px grey" id="urs">
         <h1 style="text-align:center;">{{room.name}}</h1>
-        <p><a href="">{{room.user}}</a></p>
-        <p><a href="">{{room.user}}</a></p>
-        <p><a href="">{{room.user}}</a></p>
-        <p><a href="">{{room.user}}</a></p>
-        <p><a href="">{{room.user}}</a></p>
+        {% for usr in room.users %}
+          <p><a href="">{{usr}}</a></p>
+        {% endfor %}
       </div>
     </div>
   <div class="container dark" id="chat">
-    <div id="chat-section" style="overflow-y:scroll; height:92%; border: 1px white solid; width: 100%;box-shadow: 1px 1px 2px grey" class="container">
-      <p>12:45 {{room.user}}: lol</p> <!--89 max-->
-      <p>12:45 {{room.user}}: ashuaashuaashuaashuaasasdsadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+    <div id="chat-section" style="overflow-y:scroll; height:92%; border: 1px #0000001f solid; width: 100%;box-shadow: 1px 1px 2px grey" class="container">
+      {% for msg in chat_messages %}
+        <p> {{msg.user}}: {{msg.message}}</p> <!--89 max-->
+      {% endfor %}
     </div>
       <div style="width: 100%; height: 8%; padding:0; display: flex;" class="container">
-          <form method="POST" style="width: 100%; display:flex;">
-            <input type="text" placeholder="Type your message" style="width: 80%; height: 100%;">
+          <form method="POST" style="width: 100%; display:flex;"> {% csrf_token %}
+            <input type="text" name='message' placeholder="Type your message" style="width: 80%; height: 100%;">
             <button type="submit" class="btn-success" style="width: 20%;">Send</button>
           </form>
       </div>

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block 'head' %}
+    <style>
+        div, p, h3{
+            color: white
+        }
+        main, html{
+            background-color: #2a2823;
+        }
+        .dark{
+            background-color: #333;
+        }
+        .form-control{
+            background-color: #201f1b;
+            color: #218838;
+        }
+        .form-control:hover{
+            background-color: #242221;
+            color: #218838;
+        }
+        .form-control:focus{
+            background-color: #262423;
+            color: #218838;
+        }
+        #main{
+          width: 60%;
+          border: 2px white solid;
+          border-radius: .5em;
+        }
+        main{
+        padding-top: 30px;
+        }
+        .rounded-pill{
+          width: 45%;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="container dark" id='main'>
+  <h1 style="text-align: center; padding: 10px 0 10px 0" class="display-4">Create a new Public Room</h1>
+  <form method="POST" enctype='multipart/form-data'> {% csrf_token %}
+    <div class="form-group" style="display: flex;justify-content: space-evenly;">
+      <input type="text" name="name" placeholder="Room name" class="form-control rounded-pill border-0 shadow-sm px-4">
+      <input type="text" name="description" placeholder="Room description" class="form-control rounded-pill border-0 shadow-sm px-4">
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-success btn-block mb-2 rounded-pill shadow-sm" style="width: 100%; margin:20p 0 10px 0x">Submit</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

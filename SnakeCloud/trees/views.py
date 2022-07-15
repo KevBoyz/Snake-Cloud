@@ -1,5 +1,6 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.decorators import login_required
+import json
 from .models import *
 
 
@@ -25,19 +26,47 @@ def dashboard(request):
 
 @login_required(login_url='/auth/login/')
 def room_view(request, room):
-    room_model = Room.objects.filter(name=room)
+    room_model = Room.objects.get(name=room)
     if not room_model:
+        return HttpResponse(f'Room {room} not found')
+    else:
+        if request.user.id not in room_model.users:
+            room_model.users[str(request.user.id)] = str(request.user)
+            room_model.len = str(len(room_model.users))
+            room_model.save()
+        if request.method == 'POST':
+            try:
+                message = request.POST.get('message')
+                msg = Chat_message(
+                    user=request.user,
+                    room=room_model,
+                    message=message
+                )
+                msg.save()
+                chat_messages = Chat_message.objects.filter(room=room_model)
+                return render(request, 'trees/room_page.html', {'room': room_model, 'chat_messages': chat_messages})
+            except Exception as e:
+                return HttpResponse(e)
+        elif request.method == 'GET':
+            chat_messages = Chat_message.objects.filter(room=room_model)
+            return render(request, 'trees/room_page.html', {'room': room_model, 'chat_messages': chat_messages})
+
+
+@login_required(login_url='/auth/login/')
+def new_room(request):
+    if request.method == 'POST':
+        room = request.POST.get('name')
+        description = request.POST.get('description')
         try:
             new_room = Room(
-                user=request.user,
+                admin=request.user,
                 name=room,
-                description=''
+                description=description
             )
             new_room.save()
             room_model = Room.objects.get(name=room)
-            return render(request, 'trees/room_page.html', {'room': room_model})
+            return redirect(f'/utf8trees/{room}')
         except Exception as e:
             return HttpResponse(e)
-    else:
-        room_model = Room.objects.get(name=room)
-        return render(request, 'trees/room_page.html', {'room': room_model})
+    elif request.method == 'GET':
+        return render(request, 'trees/new_room.html')
