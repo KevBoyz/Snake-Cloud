@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}{{article.title}}{% endblock %}
+
+{% block 'head' %}
+  {{form.media}}
+  <style>
+    .card{
+    margin: 0 3px 3px 3px !important;
+    max-width: 30%;
+    }
+    .contrast{
+      background-color: #333;
+      color: #10dd3c;
+    }
+    .contrast a{
+      color: #10dd3c;
+      text-decoration: none;
+    }
+    a:hover{
+        text-decoration: none;
+        color: #10ff2c;
+    }
+    .dark, html{
+      background-color: #2a2823;
+      color: #28a543;
+  }
+  .form-control{
+    background-color: #201f1b;
+    color: #218838;
+}
+.form-control:hover{
+    background-color: #242221;
+    color: #218838;
+}
+.form-control:focus{
+    background-color: #302e2d;
+    color: #218838;
+}
+.dark-title, .dark-p{
+  background-color: #0000009e;
+  padding: 2px;
+  }
+small {
+   color: #10cc3c;
+}
+main, body, html{
+background-color: #2a2823;
+}
+#article{
+    color: #efefef
+}
+#article a{
+    color: #10cc3c !important;
+    }
+    #article a:hover{
+    color: #10cc3c !important;
+    text-decoration: underline
+    }
+  </style>
+{% endblock %}
+
+{% block  content %}
+    <p class="contrast" style="margin:0"> {{article.description}} </p>
+    <div style="margin: 2% 0 0 0">
+        <span class="contrast" style="margin: 5% 0 5% 15%;"><a href="/users/{{article.admin}}" class="contrast">{{article.title}} by {{article.admin}} {{article.date}}</a></span>
+        <div class="container contrast" style="padding: 20px 5% 8px 5%; margin: 0 0 5% 15%; width: 70%" id="article">
+            {{article.content.html|safe}}
+        </div>
+    </div>
+
+
+{% endblock %}

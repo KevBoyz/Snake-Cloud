@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Create a new article{% endblock %}
+
+{% block 'head' %}
+  {{form.media}}
+  <style>
+    .card{
+    margin: 0 3px 3px 3px !important;
+    max-width: 30%;
+    }
+    .contrast{
+      background-color: #333;
+      color: #10dd3c;
+    }
+    .contrast a{
+      color: #10ddj3c;
+      text-decoration: none;
+    }
+    a:hover{
+        text-decoration: none;
+    }
+    .dark, html{
+      background-color: #2a2823;
+      color: #28a543;
+  }
+  .form-control{
+    background-color: #201f1b;
+    color: #218838;
+}
+.form-control:hover{
+    background-color: #242221;
+    color: #218838;
+}
+.form-control:focus{
+    background-color: #302e2d;
+    color: #218838;
+}
+.dark-title, .dark-p{
+  background-color: #0000009e;
+  padding: 2px;
+  }
+small {
+   color: #10cc3c;
+}
+  </style>
+{% endblock %}
+
+{% block  content %}
+    <form action="" method="POST">{% csrf_token %}
+      <input type="text" name="title" placeholder="Title of your article">
+      <input type="text" name="description" placeholder="Description for your article">
+        {{ form.content }}
+      <button type="submit">Publish</button>
+    </form>
+{% endblock %}

@@ -65,7 +65,7 @@ small {
     <div class="container" style="width: 79%; padding:0 0 20px 0;">
       <div class="card-group">
         {% for post in posts %}
-          <div class="card contrast" style="background-image: url('/media/{{post.image}}'); background-position: center;background-repeat: no-repeat;background-size: cover; border: 1px #343434 solid">
+          <div class="card contrast" style="background-image: url('/media/{{post.image}}'); background-position: center;background-repeat: no-repeat;background-size: cover; border: 1px #343434 solid; flex-wrap: wrap;">
             <a href="post/{{post.id}}">
               <div class="card-body">
                 <h5 class="card-title dark-title">{{ post.title }}</h5>

@@ -3,7 +3,6 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block 'head' %}
-  {{form.media}}
   <style>
     .card{
     margin: 0 3px 3px 3px !important;
@@ -17,7 +16,8 @@
       color: #10dd3c;
       text-decoration: none;
     }
-    .contrast a:hover{
+    a:hover{
+        text-decoration: none;
     }
     .dark, html{
       background-color: #2a2823;
@@ -48,8 +48,8 @@ small {
 {% block  content %}
 <div class="jumbotron jumbotron-fluid contrast" style="display:flex; margin:0;">
   <div class="container" style="width: 25%; margin:auto; padding-right:0;">
-    <h1 class="display-4">Trees of utf-8</h1>
-    <p>swap characters with other arboreal serpents</p>
+    <h1 class="display-4">Snakes Hall</h1>
+    <p>share your ideas with others serpents</p>
   </div>
   <div style="display: flex; flex-direction: column; width:70%; margin:0;position: relative;">
     <div class="container" style="display:flex; width:100%; margin:0;position: relative;">
@@ -57,17 +57,21 @@ small {
       <button type="submit" class='btn btn-success' style="width: 20%; height: 3em;margin: .5% 0 0 1%;">Search</button>
     </div>
     <div class="container" style="display:flex; width:100%; margin:0;position: relative;">
-
-      <button type="submit" class='btn btn-success' style="width: 20%; height: 3em;margin: 1% 1.5% 0 0;"><a href="/utf8trees/new">Create a new Room</a></button>
-      <button type="submit" class='btn btn-info' style="width: 20%; height: 3em;margin: 1% 1.5% 0 0;">Recent Rooms</button>
-      <button type="submit" class='btn btn-warning' style="width: 20%; height: 3em;margin: 1% 1% 0 0;">Manage your Rooms</button>
-      <button type="submit" class='btn btn-danger' style="width: 20%; height: 3em;margin: 1% 0 0 0;">Report an Room</button>
+      <button type="submit" class='btn btn-warning' style="width: 42%; height: 3em;margin: 1% 1% 0 0;">Manage your Articles</button>
+      <button type="submit" class='btn btn-danger' style="width: 41%; height: 3em;margin: 1% 0 0 0;">Report an Article</button>
     </div>
   </div>
 </div>
 
-<form action="" method="POST">{% csrf_token %}
-    {{ form.content }}
-  <button type="submit">lol</button>
-</form>
+<div class="dark" style="display:flex; padding: 25px 0 0 5%; flex-wrap: wrap;">
+  {% for article in articles %}
+    <a href="/hall/articles/{{article.title}}" class="contrast" style="margin: 5px;">
+      <div class="contrast p-3">
+        <h4>{{article.title}}</h4>
+        <p>{{article.description}}</p>
+        <small>{{article.admin}} {{article.date}}</small>
+      </div>
+    </a>
+  {% endfor %}
+</div>
 {% endblock %}
