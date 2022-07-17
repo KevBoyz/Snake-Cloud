@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .forms import QuillFieldForm
-import ast
+from .models import QuillPost
 
 
 def test(request):
@@ -8,5 +8,8 @@ def test(request):
         if not request.POST.get('content'):
             return render(request, 'hall/test.html', {'form': QuillFieldForm()})
         else:
-            html = ast.literal_eval(request.POST.get('content'))['html']
+            quill = QuillPost(
+                content=request.POST.get('content')
+            )
+            quill.save()
     return render(request, 'hall/test.html', {'form': QuillFieldForm()})
