@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import QuillFieldForm
 from .models import QuillPost
 from django.contrib.auth.decorators import login_required
@@ -14,7 +14,7 @@ def dashboard(request):
 def new_article(request):
     if request.method == 'POST':
         if not request.POST.get('content'):
-            return render(request, 'hall/test.html', {'form': QuillFieldForm()})
+            return render(request, 'hall/dashboard.html', {'form': QuillFieldForm()})
         else:
             quill = QuillPost(
                 title=request.POST.get('title'),
@@ -23,7 +23,9 @@ def new_article(request):
                 content=request.POST.get('content')
             )
             quill.save()
-    return render(request, 'hall/new_article.html', {'form': QuillFieldForm()})
+            return redirect('/hall')
+    else:
+        return render(request, 'hall/new_article.html', {'form': QuillFieldForm()})
 
 
 @login_required(login_url='/auth/login/')
@@ -31,5 +33,3 @@ def article(request, article):
     if request.method == 'GET':
         article = QuillPost.objects.get(title=article)
         return render(request, 'hall/article.html', {'article': article})
-
-

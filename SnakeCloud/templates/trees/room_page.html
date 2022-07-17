@@ -75,6 +75,18 @@ small {
     background-color: #0000001f;
     margin: 3px 0 3px 0
   }
+    .form-control{
+      background-color: #201f1b;
+      color: #218838;
+  }
+  .form-control:hover{
+      background-color: #242221;
+      color: #218838;
+  }
+  .form-control:focus{
+      background-color: #302e2d;
+      color: #218838;
+  }
   </style>
 {% endblock %}
 
@@ -96,7 +108,7 @@ small {
     </div>
       <div style="width: 100%; height: 8%; padding:0; display: flex;" class="container">
           <form method="POST" style="width: 100%; display:flex;"> {% csrf_token %}
-            <input type="text" name='message' placeholder="Type your message" style="width: 80%; height: 100%;">
+            <input type="text" name='message' class="form-control" placeholder="Type your message" style="width: 80%; height: 100%; border: none">
             <button type="submit" class="btn-success" style="width: 20%;">Send</button>
           </form>
       </div>
