@@ -26,5 +26,5 @@ urlpatterns = [
     path('users/', include('userpage.urls')),
     path('jungle/', include('jungle_of_files.urls')),
     path('utf8trees/', include('trees.urls')),
+    path('hall/', include('snakeshall.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
