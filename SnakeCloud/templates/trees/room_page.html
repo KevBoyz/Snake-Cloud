@@ -95,7 +95,7 @@ small {
     <div class="container dark" id="users" style="overflow-y:scroll; ">
       <div style="height:100%;border: 1px #0000001f solid; width: 100%;box-shadow: 1px 1px 2px grey" id="urs">
         <h1 style="text-align:center;">{{room.name}}</h1>
-        {% for usr in room.users %}
+        {% for usr in room.users.values %}
           <p><a href="">{{usr}}</a></p>
         {% endfor %}
       </div>
