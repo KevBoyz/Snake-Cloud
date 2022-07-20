@@ -6,22 +6,10 @@ from .models import *
 
 @login_required(login_url='/auth/login/')
 def dashboard(request):
-    if request.method == 'POST':
-        user = request.user
-        name = request.POST.get('name')
-        description = request.POST.get('description')
-        try:
-            room = Room(
-                user=user,
-                name=name,
-                description=description
-            )
-        except Exception as e:
-            return HttpResponse(e)
-        room.save()
-    elif request.method == 'GET':
-        rooms = Room.objects.all()
-        return render(request, 'trees/dashboard.html', {'rooms': rooms})
+    rooms = Room.objects.all()
+    admrooms = Room.objects.filter(admin=request.user)
+    print(admrooms)
+    return render(request, 'trees/dashboard.html', {'rooms': rooms, 'admrooms': admrooms})
 
 
 @login_required(login_url='/auth/login/')
@@ -70,3 +58,9 @@ def new_room(request):
             return HttpResponse(e)
     elif request.method == 'GET':
         return render(request, 'trees/new_room.html')
+
+
+@login_required(login_url='/auth/login/')
+def delete(request, room):
+    Room.objects.get(name=room).delete()
+    return redirect('/utf8trees')

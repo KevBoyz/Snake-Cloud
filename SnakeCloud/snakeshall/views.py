@@ -7,7 +7,8 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='/auth/login/')
 def dashboard(request):
     articles = QuillPost.objects.all()
-    return render(request, 'hall/dashboard.html', {'articles': articles})
+    admarticles = QuillPost.objects.filter(admin=request.user)
+    return render(request, 'hall/dashboard.html', {'articles': articles, 'admarticles': admarticles})
 
 
 @login_required(login_url='/auth/login/')
@@ -33,3 +34,9 @@ def article(request, article):
     if request.method == 'GET':
         article = QuillPost.objects.get(title=article)
         return render(request, 'hall/article.html', {'article': article})
+
+
+def delete(request, article):
+    QuillPost.objects.get(title=article).delete()
+    return redirect('/hall')
+

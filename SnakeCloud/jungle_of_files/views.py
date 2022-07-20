@@ -6,7 +6,8 @@ from .models import *
 @login_required(login_url='/auth/login/')
 def dashboard(request):
     posts = FilePost.objects.all
-    return render(request, 'jungle/dashboard.html', {'posts': posts})
+    admposts = FilePost.objects.filter(user=request.user)
+    return render(request, 'jungle/dashboard.html', {'posts': posts, 'admposts': admposts})
 
 
 @login_required(login_url='/auth/login/')
@@ -35,4 +36,14 @@ def upload(request):
             return HttpResponse(e)
     elif request.method == 'GET':
         return render(request, 'jungle/upload.html')
+
+
+@login_required(login_url='/auth/login/')
+def delete(request, id):
+    FilePost.objects.get(id=id).delete()
+    return redirect('/jungle/dashboard/')
+
+
+
+
 

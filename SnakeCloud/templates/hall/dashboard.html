@@ -57,7 +57,7 @@ small {
       <button type="submit" class='btn btn-success' style="width: 20%; height: 3em;margin: .5% 0 0 1%;">Search</button>
     </div>
     <div class="container" style="display:flex; width:100%; margin:0;position: relative;">
-      <button type="submit" class='btn btn-warning' style="width: 42%; height: 3em;margin: 1% 1% 0 0;">Manage your Articles</button>
+      <button type="submit" class='btn btn-warning' data-toggle="modal" data-target="#modal" style="width: 42%; height: 3em;margin: 1% 1% 0 0;">Manage your Articles</button>
       <button type="submit" class='btn btn-danger' style="width: 41%; height: 3em;margin: 1% 0 0 0;">Report an Article</button>
     </div>
   </div>
@@ -74,4 +74,38 @@ small {
     </a>
   {% endfor %}
 </div>
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header contrast" style="color: #0d0; ">
+                  <h4 class="titulo">Manage your Articles</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body dark">
+                    <div class="form-row">
+                        <div class='col-md'>
+                          <label>Listed Articles</label>
+                          <ol>
+                            {% for article in admarticles%}
+                              <li><a href="articles/{{article.title}}">{{article.title}}</a></li>
+                            {% endfor %}
+                          </ol>
+                        </div>
+                        <div class='col-md'>
+                                <label>Click to delete</label>
+                                  <ol>
+                                  {% for article in admarticles%}
+                                    <li><a href="articles/delete/{{article.title}}">{{article.title}}</a></li>
+                                  {% endfor %}
+                                  </ol>
+                                </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
