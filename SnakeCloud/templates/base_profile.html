@@ -1,12 +1,49 @@
 {% extends "base.html" %}
 {% block title %}{{user.username}}{% endblock %}
 
+{% block 'head' %}
+  <style>
+    .flex-nav-card {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        border: 1px solid rgba(0,0,0,.125);
+        border-radius: 0.50rem;
+    }
+    .flex-nav-card-item{
+      font-size: 1em;
+      text-align: center;
+      width: 100%;
+      padding: 1em 0 1em 0;
+      color: #777;
+    }
+    .flex-nav-card-item:hover{
+        background-color: #2a2823;
+        color: #28a543;
+        text-shadow: 1px 1px 1px rgba(0,0,0,.100);
+        text-decoration: None;
+    }
+        .contrast{
+      background-color: #333;
+      color: #10dd3c;
+    }
+    .contrast a{
+      color: #10dd3c;
+      text-decoration: none;
+    }
+    .dark, html, main{
+      background-color: #2a2823;
+      color: #28a543;
+  }
+  </style>
+{% endblock %}
+
 {% block content %}
 <br>
 <section style="margin: 0 30px 0 30px">
       <div class="row">
         <div class="col-lg-4">
-          <div class="card mb-4">
+          <div class="card mb-4 contrast" >
             <div class="card-body text-center">
               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyodLg1AOTOlrYDYjCvjGWZTav_fUeGK92Pw&usqp=CAU"
                    alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
@@ -23,30 +60,19 @@
               </div>
           </div>
             </div>
-            <div class="card mb-4 mb-lg-0">
-              {% if user_page.website%}
+            <div class="card mb-4 mb-lg-0 contrast">
                 <div class="card-body p-0">
-                  <ul class="list-group list-group-flush rounded-3">
-                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                      <i class="fas fa-globe fa-lg text-warning"></i>
-                      <a class="mb-0" href="{{user_page.website}}">{{user_page.website}}</a>
+                  <ul class="list-group list-group-flush rounded-3 contrast">
+                    <li class="list-group-item d-flex justify-content-between align-items-center p-3 contrast">
+                      <i class="fas fa-globe fa-lg text-warning contrast"></i>
+                      <a class="mb-0" href="users/{{user.username}}">snake_cloud/{{user.username}}</a>
                     </li>
                   </ul>
                 </div>
-              {% else %}
-                 <div class="card-body p-0" style="border: 0px">
-                  <ul class="list-group list-group-flush rounded-3">
-                    <li class="list-group-item d-flex justify-content-left align-items-center p-3">
-                      <i class="fas fa-globe fa-lg text-warning"></i>
-                      <a class="mb-0" href="http://snake.cloud/{{user_page.name}}">http://snake.cloud/{{user_page.name}}</a>
-                    </li>
-                  </ul>
-                </div>
-              {% endif %}
             </div>
           </div>
           <div class="col-lg-8">
-                <div class="flex-nav-card">
+                <div class="flex-nav-card contrast">
                   <a href="" class="flex-nav-card-item">Overview</a>
                   <a href="" class="flex-nav-card-item">Upload Files</a>
                   <a href="" class="flex-nav-card-item">Posted Articles</a>
