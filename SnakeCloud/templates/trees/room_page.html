@@ -103,7 +103,7 @@ small {
   <div class="container dark" id="chat">
     <div id="chat-section" style="overflow-y:scroll; height:92%; border: 1px #0000001f solid; width: 100%;box-shadow: 1px 1px 2px grey" class="container">
       {% for msg in chat_messages %}
-        <p> {{msg.user}}: {{msg.message}}</p> <!--89 max-->
+        <p> {{msg.date}} - {{msg.user}}: {{msg.message}}</p> <!--89 max-->
       {% endfor %}
     </div>
       <div style="width: 100%; height: 8%; padding:0; display: flex;" class="container">

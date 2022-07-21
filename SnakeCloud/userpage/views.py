@@ -5,7 +5,8 @@ from django.contrib.auth.models import User
 
 @login_required(login_url='/auth/login/')
 def userpage(request, username):
-    return render(request, 'user_profile/profile_overview.html', {'userpage': username})
+    user = User.objects.get(username=username)
+    return render(request, 'user_profile/profile_overview.html', {'userpage': user})
 
 
 def users_list(request):

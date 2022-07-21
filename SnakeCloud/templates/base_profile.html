@@ -47,10 +47,10 @@
             <div class="card-body text-center">
               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyodLg1AOTOlrYDYjCvjGWZTav_fUeGK92Pw&usqp=CAU"
                    alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-              <h5 class="my-3">{{user.username}}</h5>
+              <h5 class="my-3">{{userpage.username}}</h5>
               <p class="text-muted mb-4">Lorem ipsum dolor sit amet</p>
               <div class="d-flex justify-content-around mb-2">
-                {% if user.username != userpage %}
+                {% if userpage != user %}
                   <button type="button" class="btn btn-outline-primary ms-1" style="width: 30%">Message</button>
                   <button type="button" class="btn btn-primary" style="width: 60%">Follow</button>
                 {% else %}
